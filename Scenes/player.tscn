@@ -1,7 +1,8 @@
-[gd_scene load_steps=56 format=3 uid="uid://cjrf70d7x2x4g"]
+[gd_scene load_steps=57 format=3 uid="uid://cjrf70d7x2x4g"]
 
+[ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_22itn"]
 [ext_resource type="Texture2D" uid="uid://c6wjetu7svov0" path="res://Assets/Sprites/Characters/player.png" id="1_dss7g"]
-[ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_rrdoe"]
+[ext_resource type="PackedScene" uid="uid://cg0tend51h18f" path="res://Scenes/dust_effect.tscn" id="2_7ahkd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7rxrc"]
 atlas = ExtResource("1_dss7g")
@@ -419,7 +420,8 @@ height = 14.0
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
-script = ExtResource("1_rrdoe")
+script = ExtResource("1_22itn")
+dust_scene = ExtResource("2_7ahkd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17)

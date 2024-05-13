@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var friction = 0.18
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@export var dust_scene: PackedScene
 
 var last_direction = Direction.DOWN
 
@@ -35,21 +36,25 @@ func _change_sprite_direction(move_direction: Vector2):
 			animated_sprite_2d.flip_h = false
 			animated_sprite_2d.play("walk_right")
 			last_direction = Direction.RIGHT
+			_spwan_dust_particle()
 	elif move_direction.x < 0:
 		if last_direction != Direction.LEFT:
 			animated_sprite_2d.flip_h = true
 			animated_sprite_2d.play("walk_right")
 			last_direction = Direction.LEFT
+			_spwan_dust_particle()
 	elif move_direction.y < 0:
 		if last_direction != Direction.UP:
 			animated_sprite_2d.flip_h = false
 			animated_sprite_2d.play("walk_up")
 			last_direction = Direction.UP
+			_spwan_dust_particle()
 	elif move_direction.y > 0:
 		if last_direction != Direction.DOWN:
 			animated_sprite_2d.flip_h = false
 			animated_sprite_2d.play("walk_down")
 			last_direction = Direction.DOWN
+			_spwan_dust_particle()
 	else:
 		match last_direction:
 			Direction.RIGHT:
@@ -65,3 +70,13 @@ func _change_sprite_direction(move_direction: Vector2):
 				animated_sprite_2d.flip_h = false
 				animated_sprite_2d.play("idle_down")
 		last_direction = Direction.NONE
+
+
+func _spwan_dust_particle(count: int = 2):
+	for n in count:
+		var instance = dust_scene.instantiate()
+		add_child(instance)
+		instance.offset.x += randf_range(-5, 5)
+		instance.offset.y += randf_range(-5, 5)
+		instance.reparent(get_tree().get_root())
+
