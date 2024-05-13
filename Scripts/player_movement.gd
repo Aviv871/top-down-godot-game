@@ -20,7 +20,7 @@ enum Direction {
 func _ready():
 	animated_sprite_2d.play("idle_down")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
 	if direction.length() > 1.0:
 		direction = direction.normalized()

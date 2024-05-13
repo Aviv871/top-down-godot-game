@@ -427,6 +427,7 @@ dust_scene = ExtResource("2_7ahkd")
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_4f7bw")
 animation = &"idle_down"
+autoplay = "idle_down"
 frame_progress = 0.345403
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
